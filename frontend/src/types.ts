@@ -29,4 +29,7 @@ export interface Supplier {
   id: number;
   name: string;
   location: Location;
+  address: string;
+  phone: string;
+  email: string;
 } 

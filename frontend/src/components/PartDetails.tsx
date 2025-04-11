@@ -135,51 +135,127 @@ const PartDetails: React.FC = () => {
             }}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <BuildIcon sx={{ mr: 2, color: 'primary.main' }} />
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Part Details
+              </Typography>
+            </Box>
+            <Divider sx={{ mb: 3 }} />
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <TimeIcon sx={{ mr: 2, color: 'primary.main' }} />
+                  <Box>
+                    <Typography variant="subtitle2" color="text.secondary">
+                      Delivery Time
+                    </Typography>
+                    <Typography variant="body1">
+                      {part.deliveryTime}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <ScaleIcon sx={{ mr: 2, color: 'primary.main' }} />
+                  <Box>
+                    <Typography variant="subtitle2" color="text.secondary">
+                      Weight
+                    </Typography>
+                    <Typography variant="body1">
+                      {part.weight} kg
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                  <MoneyIcon sx={{ mr: 2, color: 'primary.main' }} />
+                  <Box>
+                    <Typography variant="subtitle2" color="text.secondary">
+                      Price
+                    </Typography>
+                    <Typography variant="body1">
+                      ${part.price.toFixed(2)}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Paper 
+            elevation={0} 
+            sx={{ 
+              p: 3, 
+              mb: 3, 
+              borderRadius: 2,
+              background: theme.palette.background.paper,
+              border: `1px solid ${alpha(theme.palette.divider, 0.1)}`
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <BusinessIcon sx={{ mr: 2, color: 'primary.main' }} />
               <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Suppliers
+                Supplier
               </Typography>
             </Box>
             <Divider sx={{ mb: 3 }} />
             <Grid container spacing={2}>
               {part.suppliers && part.suppliers.length > 0 ? (
                 part.suppliers.map((supplier) => (
-                  <Grid item xs={12} sm={6} key={supplier.id}>
-                    <Tooltip 
-                      title="Click to view supplier details and performance metrics"
-                      arrow
-                      placement="top"
+                  <Grid item xs={12} key={supplier.id}>
+                    <Card 
+                      sx={{ 
+                        transition: 'all 0.3s ease',
+                        border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                        borderRadius: 2
+                      }}
                     >
-                      <Card 
-                        onClick={() => navigate(`/supplier/${supplier.id}`)}
-                        sx={{ 
-                          cursor: 'pointer',
-                          transition: 'all 0.3s ease',
-                          '&:hover': {
-                            transform: 'translateY(-4px)',
-                            boxShadow: `0 8px 16px ${alpha(theme.palette.common.black, 0.2)}`,
-                            borderColor: theme.palette.primary.main
-                          },
-                          border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
-                          borderRadius: 2
-                        }}
-                      >
-                        <CardContent>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                            {supplier.name}
+                      <CardContent>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2 }}>
+                          {supplier.name}
+                        </Typography>
+                        
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                          <LocationIcon sx={{ mr: 1, color: 'primary.main', fontSize: '1rem' }} />
+                          <Typography variant="body2">
+                            {supplier.address}
                           </Typography>
-                          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                            <Chip 
-                              label={supplier.location.name} 
-                              size="small" 
-                              color="secondary" 
-                              variant="outlined"
-                              icon={<LocationIcon />}
-                            />
-                          </Box>
-                        </CardContent>
-                      </Card>
-                    </Tooltip>
+                        </Box>
+                        
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                          <Chip 
+                            label={supplier.location.name} 
+                            size="small" 
+                            color="secondary" 
+                            variant="outlined"
+                            icon={<LocationIcon />}
+                            sx={{ mr: 1 }}
+                          />
+                        </Box>
+                        
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                          <Typography variant="body2" sx={{ fontWeight: 500, mr: 1 }}>
+                            Phone:
+                          </Typography>
+                          <Typography variant="body2">
+                            {supplier.phone}
+                          </Typography>
+                        </Box>
+                        
+                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                          <Typography variant="body2" sx={{ fontWeight: 500, mr: 1 }}>
+                            Email:
+                          </Typography>
+                          <Typography variant="body2">
+                            {supplier.email}
+                          </Typography>
+                        </Box>
+                      </CardContent>
+                    </Card>
                   </Grid>
                 ))
               ) : (

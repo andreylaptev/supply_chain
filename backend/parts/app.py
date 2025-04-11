@@ -27,7 +27,10 @@ parts = [
                     "name": "Intel Factory",
                     "latitude": 45.5155,
                     "longitude": -122.6789
-                }
+                },
+                "address": "2200 Mission College Blvd, Santa Clara, CA 95054",
+                "phone": "+1 (408) 765-8080",
+                "email": "supplier.relations@intel.com"
             }
         ]
     },
@@ -52,7 +55,10 @@ parts = [
                     "name": "Samsung Factory",
                     "latitude": 37.5665,
                     "longitude": 126.9780
-                }
+                },
+                "address": "129 Samsung-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, South Korea",
+                "phone": "+82 2 2053 3000",
+                "email": "supplier.relations@samsung.com"
             }
         ]
     },
@@ -77,7 +83,10 @@ parts = [
                     "name": "LG Display",
                     "latitude": 37.5665,
                     "longitude": 126.9780
-                }
+                },
+                "address": "128 Yeoui-daero, Yeongdeungpo-gu, Seoul, South Korea",
+                "phone": "+82 2 3777 1114",
+                "email": "supplier.relations@lgdisplay.com"
             }
         ]
     },
@@ -102,7 +111,10 @@ parts = [
                     "name": "Samsung Battery Plant",
                     "latitude": 37.5665,
                     "longitude": 126.9780
-                }
+                },
+                "address": "150 Samsung-ro, Giheung-gu, Yongin-si, Gyeonggi-do, South Korea",
+                "phone": "+82 31 8006 7114",
+                "email": "supplier.relations@samsungsdi.com"
             }
         ]
     }
