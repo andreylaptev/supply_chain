@@ -16,12 +16,21 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.python-version
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
 # Flask
 instance/
@@ -54,4 +63,25 @@ Thumbs.db
 
 # Misc
 .cache/
-.temp/ 
+.temp/
+
+# Database
+backend/shared/db/
+*.db
+*.sqlite
+*.sqlite3
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db 
