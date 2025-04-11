@@ -117,6 +117,118 @@ parts = [
                 "email": "supplier.relations@samsungsdi.com"
             }
         ]
+    },
+    {
+        "id": "5",
+        "name": "Motherboard",
+        "deliveryTime": "6 days",
+        "weight": 0.5,
+        "price": 159.99,
+        "sourceLocation": {
+            "id": "6",
+            "name": "ASUS Factory",
+            "latitude": 25.0330,
+            "longitude": 121.5654
+        },
+        "suppliers": [
+            {
+                "id": "5",
+                "name": "ASUS",
+                "location": {
+                    "id": "6",
+                    "name": "ASUS Factory",
+                    "latitude": 25.0330,
+                    "longitude": 121.5654
+                },
+                "address": "15 Li-Te Road, Peitou, Taipei 112, Taiwan",
+                "phone": "+886 2 2894 3447",
+                "email": "supplier.relations@asus.com"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "name": "GPU",
+        "deliveryTime": "7 days",
+        "weight": 0.3,
+        "price": 499.99,
+        "sourceLocation": {
+            "id": "7",
+            "name": "NVIDIA Factory",
+            "latitude": 37.4419,
+            "longitude": -122.1430
+        },
+        "suppliers": [
+            {
+                "id": "6",
+                "name": "NVIDIA Corporation",
+                "location": {
+                    "id": "7",
+                    "name": "NVIDIA Factory",
+                    "latitude": 37.4419,
+                    "longitude": -122.1430
+                },
+                "address": "2788 San Tomas Expressway, Santa Clara, CA 95051",
+                "phone": "+1 (408) 486-2000",
+                "email": "supplier.relations@nvidia.com"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "name": "Storage SSD",
+        "deliveryTime": "4 days",
+        "weight": 0.08,
+        "price": 129.99,
+        "sourceLocation": {
+            "id": "8",
+            "name": "Western Digital Factory",
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "suppliers": [
+            {
+                "id": "7",
+                "name": "Western Digital",
+                "location": {
+                    "id": "8",
+                    "name": "Western Digital Factory",
+                    "latitude": 37.7749,
+                    "longitude": -122.4194
+                },
+                "address": "5601 Great Oaks Parkway, San Jose, CA 95119",
+                "phone": "+1 (408) 801-1000",
+                "email": "supplier.relations@wdc.com"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "name": "Power Supply",
+        "deliveryTime": "5 days",
+        "weight": 0.4,
+        "price": 79.99,
+        "sourceLocation": {
+            "id": "9",
+            "name": "Corsair Factory",
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "suppliers": [
+            {
+                "id": "8",
+                "name": "Corsair",
+                "location": {
+                    "id": "9",
+                    "name": "Corsair Factory",
+                    "latitude": 37.7749,
+                    "longitude": -122.4194
+                },
+                "address": "47100 Bayside Parkway, Fremont, CA 94538",
+                "phone": "+1 (510) 657-8747",
+                "email": "supplier.relations@corsair.com"
+            }
+        ]
     }
 ]
 
