@@ -11,7 +11,8 @@ import {
   Chip,
   Divider,
   useTheme,
-  alpha
+  alpha,
+  Tooltip
 } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -153,35 +154,41 @@ const ProductDetails: React.FC = () => {
             <Grid container spacing={2}>
               {product.parts.map((part) => (
                 <Grid item xs={12} sm={6} key={part.id}>
-                  <Card 
-                    onClick={() => navigate(`/part/${part.id}`)}
-                    sx={{ 
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
-                        boxShadow: `0 8px 16px ${alpha(theme.palette.common.black, 0.2)}`,
-                        borderColor: theme.palette.primary.main
-                      },
-                      border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
-                      borderRadius: 2
-                    }}
+                  <Tooltip 
+                    title="Click to view detailed part information"
+                    arrow
+                    placement="top"
                   >
-                    <CardContent>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                        {part.name}
-                      </Typography>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-                        <Chip 
-                          label={part.sourceLocation.name} 
-                          size="small" 
-                          color="secondary" 
-                          variant="outlined"
-                          icon={<LocationIcon />}
-                        />
-                      </Box>
-                    </CardContent>
-                  </Card>
+                    <Card 
+                      onClick={() => navigate(`/part/${part.id}`)}
+                      sx={{ 
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-4px)',
+                          boxShadow: `0 8px 16px ${alpha(theme.palette.common.black, 0.2)}`,
+                          borderColor: theme.palette.primary.main
+                        },
+                        border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                        borderRadius: 2
+                      }}
+                    >
+                      <CardContent>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                          {part.name}
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                          <Chip 
+                            label={part.sourceLocation.name} 
+                            size="small" 
+                            color="secondary" 
+                            variant="outlined"
+                            icon={<LocationIcon />}
+                          />
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  </Tooltip>
                 </Grid>
               ))}
             </Grid>

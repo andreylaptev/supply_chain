@@ -1,22 +1,32 @@
 export interface Product {
-  id: string;
+  id: number;
   name: string;
+  description: string;
   parts: Part[];
+  totalCost: number;
+  deliveryTime: string;
   assemblyLocation: Location;
 }
 
 export interface Part {
-  id: string;
+  id: number;
   name: string;
+  sourceLocation: Location;
+  suppliers: Supplier[];
   deliveryTime: string;
   weight: number;
   price: number;
-  sourceLocation: Location;
 }
 
 export interface Location {
-  id: string;
+  id: number;
   name: string;
   latitude: number;
   longitude: number;
+}
+
+export interface Supplier {
+  id: number;
+  name: string;
+  location: Location;
 } 

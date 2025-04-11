@@ -17,7 +17,19 @@ parts = [
             "name": "Intel Factory",
             "latitude": 45.5155,
             "longitude": -122.6789
-        }
+        },
+        "suppliers": [
+            {
+                "id": "1",
+                "name": "Intel Corporation",
+                "location": {
+                    "id": "1",
+                    "name": "Intel Factory",
+                    "latitude": 45.5155,
+                    "longitude": -122.6789
+                }
+            }
+        ]
     },
     {
         "id": "2",
@@ -30,7 +42,19 @@ parts = [
             "name": "Samsung Factory",
             "latitude": 37.5665,
             "longitude": 126.9780
-        }
+        },
+        "suppliers": [
+            {
+                "id": "2",
+                "name": "Samsung Electronics",
+                "location": {
+                    "id": "2",
+                    "name": "Samsung Factory",
+                    "latitude": 37.5665,
+                    "longitude": 126.9780
+                }
+            }
+        ]
     },
     {
         "id": "3",
@@ -43,7 +67,19 @@ parts = [
             "name": "LG Display",
             "latitude": 37.5665,
             "longitude": 126.9780
-        }
+        },
+        "suppliers": [
+            {
+                "id": "3",
+                "name": "LG Display",
+                "location": {
+                    "id": "4",
+                    "name": "LG Display",
+                    "latitude": 37.5665,
+                    "longitude": 126.9780
+                }
+            }
+        ]
     },
     {
         "id": "4",
@@ -56,7 +92,19 @@ parts = [
             "name": "Samsung Battery Plant",
             "latitude": 37.5665,
             "longitude": 126.9780
-        }
+        },
+        "suppliers": [
+            {
+                "id": "4",
+                "name": "Samsung SDI",
+                "location": {
+                    "id": "5",
+                    "name": "Samsung Battery Plant",
+                    "latitude": 37.5665,
+                    "longitude": 126.9780
+                }
+            }
+        ]
     }
 ]
 

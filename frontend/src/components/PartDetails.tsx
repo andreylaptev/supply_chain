@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Grid, 
   Card, 
@@ -8,17 +8,20 @@ import {
   Box,
   Paper,
   Skeleton,
+  Chip,
   Divider,
   useTheme,
-  alpha
+  alpha,
+  Tooltip
 } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Build as BuildIcon, LocationOn as LocationIcon, AccessTime as TimeIcon, Scale as ScaleIcon, AttachMoney as MoneyIcon } from '@mui/icons-material';
+import { Build as BuildIcon, LocationOn as LocationIcon, AccessTime as TimeIcon, Scale as ScaleIcon, AttachMoney as MoneyIcon, Business as BusinessIcon } from '@mui/icons-material';
 import { Part } from '../types';
 
 const PartDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [part, setPart] = useState<Part | null>(null);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
@@ -58,7 +61,7 @@ const PartDetails: React.FC = () => {
         </Paper>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <Skeleton variant="rectangular" height={200} />
+            <Skeleton variant="rectangular" height={400} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Skeleton variant="rectangular" height={400} />
@@ -109,14 +112,14 @@ const PartDetails: React.FC = () => {
           </Typography>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <LocationIcon sx={{ mr: 1, color: 'secondary.main' }} />
-          <Typography variant="body1" color="text.secondary">
-            Source: {part.sourceLocation.name}
-          </Typography>
+          <Chip 
+            label={part.sourceLocation.name} 
+            size="small" 
+            color="secondary" 
+            variant="outlined"
+            icon={<LocationIcon />}
+          />
         </Box>
-        <Typography variant="body1" color="text.secondary">
-          Detailed part information and specifications.
-        </Typography>
       </Paper>
       
       <Grid container spacing={3}>
@@ -131,46 +134,62 @@ const PartDetails: React.FC = () => {
               border: `1px solid ${alpha(theme.palette.divider, 0.1)}`
             }}
           >
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 3 }}>
-              Part Specifications
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <BusinessIcon sx={{ mr: 2, color: 'primary.main' }} />
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Suppliers
+              </Typography>
+            </Box>
             <Divider sx={{ mb: 3 }} />
-            
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-              <TimeIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Box>
-                <Typography variant="subtitle2" color="text.secondary">
-                  Delivery Time
-                </Typography>
-                <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                  {part.deliveryTime}
-                </Typography>
-              </Box>
-            </Box>
-            
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-              <ScaleIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Box>
-                <Typography variant="subtitle2" color="text.secondary">
-                  Weight
-                </Typography>
-                <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                  {part.weight} kg
-                </Typography>
-              </Box>
-            </Box>
-            
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <MoneyIcon sx={{ mr: 2, color: 'primary.main' }} />
-              <Box>
-                <Typography variant="subtitle2" color="text.secondary">
-                  Price
-                </Typography>
-                <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                  ${part.price.toFixed(2)}
-                </Typography>
-              </Box>
-            </Box>
+            <Grid container spacing={2}>
+              {part.suppliers && part.suppliers.length > 0 ? (
+                part.suppliers.map((supplier) => (
+                  <Grid item xs={12} sm={6} key={supplier.id}>
+                    <Tooltip 
+                      title="Click to view supplier details and performance metrics"
+                      arrow
+                      placement="top"
+                    >
+                      <Card 
+                        onClick={() => navigate(`/supplier/${supplier.id}`)}
+                        sx={{ 
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            transform: 'translateY(-4px)',
+                            boxShadow: `0 8px 16px ${alpha(theme.palette.common.black, 0.2)}`,
+                            borderColor: theme.palette.primary.main
+                          },
+                          border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                          borderRadius: 2
+                        }}
+                      >
+                        <CardContent>
+                          <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                            {supplier.name}
+                          </Typography>
+                          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+                            <Chip 
+                              label={supplier.location.name} 
+                              size="small" 
+                              color="secondary" 
+                              variant="outlined"
+                              icon={<LocationIcon />}
+                            />
+                          </Box>
+                        </CardContent>
+                      </Card>
+                    </Tooltip>
+                  </Grid>
+                ))
+              ) : (
+                <Grid item xs={12}>
+                  <Typography variant="body1" color="text.secondary" align="center">
+                    No suppliers available for this part.
+                  </Typography>
+                </Grid>
+              )}
+            </Grid>
           </Paper>
         </Grid>
 
@@ -188,14 +207,14 @@ const PartDetails: React.FC = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <LocationIcon sx={{ mr: 2, color: 'primary.main' }} />
               <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                Location Map
+                Supplier Locations
               </Typography>
             </Box>
             <Divider sx={{ mb: 3 }} />
             <Box sx={{ height: 400, width: '100%', borderRadius: 2, overflow: 'hidden' }}>
               <MapContainer
-                center={[part.sourceLocation.latitude, part.sourceLocation.longitude]}
-                zoom={4}
+                center={[20, 0]}
+                zoom={2}
                 style={{ height: '100%', width: '100%' }}
               >
                 <TileLayer
@@ -203,6 +222,7 @@ const PartDetails: React.FC = () => {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 
+                {/* Source Location Marker */}
                 <Marker
                   position={[part.sourceLocation.latitude, part.sourceLocation.longitude]}
                 >
@@ -215,6 +235,23 @@ const PartDetails: React.FC = () => {
                     </Typography>
                   </Popup>
                 </Marker>
+
+                {/* Supplier Locations */}
+                {part.suppliers && part.suppliers.map((supplier) => (
+                  <Marker
+                    key={supplier.id}
+                    position={[supplier.location.latitude, supplier.location.longitude]}
+                  >
+                    <Popup>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                        {supplier.name}
+                      </Typography>
+                      <Typography variant="body2">
+                        {supplier.location.name}
+                      </Typography>
+                    </Popup>
+                  </Marker>
+                ))}
               </MapContainer>
             </Box>
           </Paper>
