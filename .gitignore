@@ -66,10 +66,10 @@ Thumbs.db
 .temp/
 
 # Database
-backend/shared/db/
-*.db
-*.sqlite
-*.sqlite3
+backend/shared/db/supply_chain.db
+backend/shared/db/*.db
+backend/shared/db/*.sqlite
+backend/shared/db/*.sqlite3
 
 # Virtual Environment
 venv/

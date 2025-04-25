@@ -10,7 +10,7 @@ supply_chain/
 ├── backend/           # Python microservices
 │   ├── products/     # Product service
 │   ├── parts/        # Parts service
-│   └── locations/    # Location service
+│   └── shared/       # Shared code and database
 └── README.md
 ```
 
@@ -29,7 +29,17 @@ supply_chain/
    .\setup.bat
    ```
 
-3. Start the backend services (in separate PowerShell windows):
+3. Activate the virtual environment:
+   ```powershell
+   .\venv\Scripts\activate
+   ```
+
+4. Initialize the database:
+   ```powershell
+   python -m shared.init_db
+   ```
+
+5. Start the backend services (in separate PowerShell windows):
    ```powershell
    # Terminal 1 - Products Service
    cd backend
@@ -64,24 +74,4 @@ The application will be available at:
 - Product List with detailed views
 - Part tracking and visualization
 - Supply chain map visualization
-- Dark theme with modern UI
-
-## Troubleshooting
-
-### Common Issues
-
-1. **PowerShell Execution Policy Error**
-   - Run PowerShell as Administrator
-   - Execute: `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`
-
-2. **Python Virtual Environment Issues**
-   - Delete the existing venv folder: `Remove-Item -Recurse -Force venv`
-   - Run setup.bat again
-
-3. **Node.js Dependencies Issues**
-   - Delete node_modules folder: `Remove-Item -Recurse -Force node_modules`
-   - Run setup.bat again
-
-4. **Port Already in Use**
-   - Check if any other application is using ports 3000, 5000, or 5001
-   - Kill the process or change the port in the respective configuration files 
+- Dark theme with modern UI 
