@@ -68,14 +68,15 @@ class Product(Base):
 
     def calculate_price(self) -> float:
         """
-        Calculate the retail price of the product based on total cost and markup percentage.
-        The markup percentage is set to 20% by default.
+        Calculate the retail price of the product based on the sum of all parts' prices
+        plus a markup percentage.
         
         Returns:
             float: The calculated retail price
         """
-        markup_percentage = 0.2  # 20% markup
-        return self.total_cost * (1 + markup_percentage)
+        markup_percentage = 0.25  # 25% markup
+        parts_total = sum(part.part.price * part.quantity for part in self.parts)
+        return parts_total * (1 + markup_percentage)
 
 class ProductPart(Base):
     __tablename__ = 'product_parts'
