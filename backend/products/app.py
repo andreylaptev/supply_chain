@@ -29,6 +29,7 @@ def get_products():
         'name': product.name,
         'description': product.description,
         'totalCost': product.total_cost,
+        'price': product.calculate_price(),
         'deliveryTime': product.delivery_time,
         'assemblyLocation': {
             'id': product.assembly_location.id,
@@ -64,6 +65,7 @@ def get_product(product_id):
         'name': product.name,
         'description': product.description,
         'totalCost': product.total_cost,
+        'price': product.calculate_price(),
         'deliveryTime': product.delivery_time,
         'assemblyLocation': {
             'id': product.assembly_location.id,

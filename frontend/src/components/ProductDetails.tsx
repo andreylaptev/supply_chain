@@ -127,6 +127,9 @@ const ProductDetails: React.FC = () => {
             icon={<LocationIcon />}
           />
         </Box>
+        <Typography variant="h4" color="primary" sx={{ mb: 2 }}>
+          ${product.price.toFixed(2)}
+        </Typography>
         <Typography variant="body1" color="text.secondary">
           Product details and supply chain information.
         </Typography>

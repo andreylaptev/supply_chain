@@ -120,6 +120,9 @@ const ProductList: React.FC = () => {
                         variant="outlined"
                       />
                     </Box>
+                    <Typography variant="h6" color="primary" sx={{ mt: 2 }}>
+                      ${product.price.toFixed(2)}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Tooltip>
