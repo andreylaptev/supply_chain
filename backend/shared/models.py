@@ -66,17 +66,6 @@ class Product(Base):
     assembly_location = relationship("Location", back_populates="assembly_products")
     parts = relationship("ProductPart", back_populates="product")
 
-    def calculate_price(self) -> float:
-        """
-        Calculate the retail price of the product based on total cost and markup percentage.
-        The markup percentage is set to 20% by default.
-        
-        Returns:
-            float: The calculated retail price
-        """
-        markup_percentage = 0.2  # 20% markup
-        return self.total_cost * (1 + markup_percentage)
-
 class ProductPart(Base):
     __tablename__ = 'product_parts'
 

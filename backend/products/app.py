@@ -8,28 +8,28 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from shared.database import get_db
 from repository import ProductRepository
-from sqlalchemy.orm import Session
-import json
+from service import ProductService
 
 app = Flask(__name__)
 CORS(app)
 
-def get_product_repository():
+def get_product_service():
     db = next(get_db())
-    return ProductRepository(db)
+    repository = ProductRepository(db)
+    return ProductService(repository)
 
 @app.route('/api/products', methods=['GET'])
 def get_products():
     print("Getting products...")
-    repo = get_product_repository()
-    products = repo.get_all_products()
+    service = get_product_service()
+    products = service.get_all_products()
     print(f"Found {len(products)} products")
     return jsonify([{
         'id': product.id,
         'name': product.name,
         'description': product.description,
         'totalCost': product.total_cost,
-        'price': product.calculate_price(),
+        'price': service.calculate_product_price(product),
         'deliveryTime': product.delivery_time,
         'assemblyLocation': {
             'id': product.assembly_location.id,
@@ -54,8 +54,8 @@ def get_products():
 
 @app.route('/api/products/<product_id>', methods=['GET'])
 def get_product(product_id):
-    repo = get_product_repository()
-    product = repo.get_product(int(product_id))
+    service = get_product_service()
+    product = service.get_product(int(product_id))
     
     if not product:
         return jsonify({'error': 'Product not found'}), 404
@@ -65,7 +65,7 @@ def get_product(product_id):
         'name': product.name,
         'description': product.description,
         'totalCost': product.total_cost,
-        'price': product.calculate_price(),
+        'price': service.calculate_product_price(product),
         'deliveryTime': product.delivery_time,
         'assemblyLocation': {
             'id': product.assembly_location.id,
