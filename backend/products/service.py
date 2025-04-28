@@ -37,10 +37,21 @@ class ProductService:
 
     def calculate_product_weight(self, product: Product) -> float:
         """
-        Returns the stored weight of the product.
+        Calculate the total weight of the product using the formula:
+        weight = (sum_of_part_weights * 1.15) + (total_quantity * 0.3) + 0.75
+        
+        Where:
+        - sum_of_part_weights: Sum of weights of all parts
+        - total_quantity: Total quantity of all parts
+        - 0.75: Weight of padding material
         
         Returns:
-            float: The product weight in kilograms
+            float: The calculated product weight in kilograms
         """
-        return product.weight
+        sum_of_part_weights = sum(part.part.weight * part.quantity for part in product.parts)
+        total_quantity = sum(part.quantity for part in product.parts)
+        padding_weight = 0.75  # kg
+        
+        total_weight = (sum_of_part_weights * 1.15) + (total_quantity * 0.3) + padding_weight
+        return round(total_weight, 2)
     
