@@ -6,9 +6,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from shared.database import get_db
-from repository import ProductRepository
-from service import ProductService
+from backend.shared.database import get_db
+from backend.products.repository import ProductRepository
+from backend.products.service import ProductService
 
 app = Flask(__name__)
 CORS(app)

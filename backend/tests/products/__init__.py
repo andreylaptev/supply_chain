@@ -1,0 +1,1 @@
+# This file makes the tests/products directory a Python package 

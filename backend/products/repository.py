@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from shared.models import Product, Part, Location
+from backend.shared.models import Product, Part, Location
 from typing import List, Optional
 
 class ProductRepository:

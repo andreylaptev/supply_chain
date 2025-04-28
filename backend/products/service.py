@@ -1,6 +1,6 @@
 from typing import List, Optional
-from shared.models import Product
-from repository import ProductRepository
+from backend.shared.models import Product
+from backend.products.repository import ProductRepository
 import random
 
 class ProductService:

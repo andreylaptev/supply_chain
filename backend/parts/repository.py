@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from shared.models import Part, Location, Supplier
+from backend.shared.models import Part, Location, Supplier
 from typing import List, Optional
 
 class PartRepository:
