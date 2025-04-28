@@ -61,6 +61,7 @@ class Product(Base):
     total_cost = Column(Float, nullable=False)
     delivery_time = Column(String, nullable=False)
     assembly_location_id = Column(Integer, ForeignKey('locations.id'))
+    weight = Column(Float, nullable=False, default=0.0)
 
     # Relationships
     assembly_location = relationship("Location", back_populates="assembly_products")

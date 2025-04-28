@@ -130,6 +130,9 @@ const ProductDetails: React.FC = () => {
         <Typography variant="h4" color="primary" sx={{ mb: 2 }}>
           ${product.price.toFixed(2)}
         </Typography>
+        <Typography variant="h6" color="text.secondary" sx={{ mb: 2 }}>
+          Weight: {product.weight.toFixed(2)} kg
+        </Typography>
         <Typography variant="body1" color="text.secondary">
           Product details and supply chain information.
         </Typography>

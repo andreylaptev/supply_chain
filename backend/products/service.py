@@ -1,6 +1,7 @@
 from typing import List, Optional
 from shared.models import Product
 from repository import ProductRepository
+import random
 
 class ProductService:
     def __init__(self, repository: ProductRepository):
@@ -13,6 +14,8 @@ class ProductService:
         return self.repository.get_all_products()
 
     def create_product(self, product_data: dict) -> Product:
+        # Add random weight between 1 and 10 kg
+        product_data['weight'] = round(random.uniform(1.0, 10.0), 2)
         return self.repository.create_product(product_data)
 
     def update_product(self, product_id: int, product_data: dict) -> Optional[Product]:
@@ -31,4 +34,13 @@ class ProductService:
         """
         markup_percentage = 0.2  # 20% markup
         return product.total_cost * (1 + markup_percentage)
+
+    def calculate_product_weight(self, product: Product) -> float:
+        """
+        Returns the stored weight of the product.
+        
+        Returns:
+            float: The product weight in kilograms
+        """
+        return product.weight
     

@@ -156,49 +156,56 @@ def seed_database():
                 description="High-performance laptop for professionals",
                 total_cost=1239.94,
                 delivery_time="10 days",
-                assembly_location_id=3
+                assembly_location_id=3,
+                weight=2.5
             ),
             Product(
                 name="Smartphone",
                 description="Latest smartphone with advanced features",
                 total_cost=639.96,
                 delivery_time="8 days",
-                assembly_location_id=3
+                assembly_location_id=3,
+                weight=0.2
             ),
             Product(
                 name="Desktop PC",
                 description="High-end desktop computer for gaming and content creation",
                 total_cost=1259.94,
                 delivery_time="10 days",
-                assembly_location_id=10
+                assembly_location_id=10,
+                weight=8.0
             ),
             Product(
                 name="Tablet",
                 description="Versatile tablet for work and entertainment",
                 total_cost=639.96,
                 delivery_time="8 days",
-                assembly_location_id=11
+                assembly_location_id=11,
+                weight=0.5
             ),
             Product(
                 name="Smartwatch",
                 description="Advanced smartwatch with health monitoring features",
                 total_cost=639.96,
                 delivery_time="8 days",
-                assembly_location_id=12
+                assembly_location_id=12,
+                weight=0.05
             ),
             Product(
                 name="Gaming Console",
                 description="Next-generation gaming console for immersive gameplay",
                 total_cost=1099.95,
                 delivery_time="10 days",
-                assembly_location_id=13
+                assembly_location_id=13,
+                weight=4.5
             ),
             Product(
                 name="Smart TV",
                 description="4K smart TV with advanced streaming capabilities",
                 total_cost=1219.95,
                 delivery_time="10 days",
-                assembly_location_id=14
+                assembly_location_id=14,
+                weight=15.0
             )
         ]
         

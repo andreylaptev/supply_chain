@@ -5,6 +5,7 @@ export interface Product {
   parts: Part[];
   totalCost: number;
   price: number;
+  weight: number;
   deliveryTime: string;
   assemblyLocation: Location;
 }
