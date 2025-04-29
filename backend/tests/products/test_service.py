@@ -45,6 +45,11 @@ def test_calculate_product_weight(product_service):
     assert actual_weight == expected_weight
 
 
+def test_calculate_product_price_invalid_parts(product_service, invalid_product):
+    with pytest.raises(TypeError):
+        product_service.calculate_product_price(invalid_product)
+
+
 def test_calculate_product_price(product_service):
     # Create mock parts
     part1 = Mock(spec=Part)
