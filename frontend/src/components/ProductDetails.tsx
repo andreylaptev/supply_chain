@@ -94,7 +94,7 @@ const ProductDetails: React.FC = () => {
   }
 
   return (
-    <Box>
+    <Box data-testid="product-details">
       <Paper 
         elevation={0} 
         sx={{ 

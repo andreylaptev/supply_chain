@@ -83,6 +83,7 @@ const ProductList: React.FC = () => {
               >
                 <Card 
                   onClick={() => navigate(`/product/${product.id}`)}
+                  data-testid="product-item"
                   sx={{ 
                     cursor: 'pointer',
                     height: '100%',
