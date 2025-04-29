@@ -60,7 +60,8 @@ const Navigation: React.FC = () => {
           <Button 
             color="inherit" 
             startIcon={<HomeIcon data-testid="HomeIcon" />}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/')} 
+            data-testid="dashboard-button"
             sx={{ 
               mx: 1,
               borderRadius: '8px',
