@@ -59,7 +59,7 @@ const Navigation: React.FC = () => {
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Button 
             color="inherit" 
-            startIcon={<HomeIcon data-testid="HomeIcon" />}
+            startIcon={<HomeIcon data-testid="dashboard-button" />}
             onClick={() => navigate('/')}
             sx={{ 
               mx: 1,
