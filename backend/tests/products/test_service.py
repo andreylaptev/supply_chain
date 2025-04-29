@@ -8,6 +8,12 @@ def product_service():
     repository = Mock()
     return ProductService(repository)
 
+@pytest.fixture
+def invalid_product():
+    product = Mock(spec=Product)
+    product.parts = None  # Invalid parts
+    return product
+
 def test_calculate_product_weight(product_service):
     # Create mock parts
     part1 = Mock(spec=Part)
