@@ -26,14 +26,18 @@ class ProductService:
 
     def calculate_product_price(self, product: Product) -> float:
         """
-        Calculate the retail price of the product based on total cost and markup percentage.
-        The markup percentage is set to 20% by default.
+        Calculate the retail price of the product based on the sum of all parts' prices
+        multiplied by their quantities, plus a 35% markup.
         
         Returns:
             float: The calculated retail price
         """
-        markup_percentage = 0.2  # 20% markup
-        return product.total_cost * (1 + markup_percentage)
+        # Calculate total cost from parts
+        total_parts_cost = sum(part.part.price * part.quantity for part in product.parts)
+        
+        # Apply 35% markup
+        markup_percentage = 0.35
+        return total_parts_cost * (1 + markup_percentage)
 
     def calculate_product_weight(self, product: Product) -> float:
         """
